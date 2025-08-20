@@ -21,7 +21,7 @@
 }
 
 .app-main {
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -38,7 +38,7 @@
   display: flex;
   gap: 15px;
   justify-content: center;
-  margin-bottom: 30px;
+  margin: 30px 0;
   flex-wrap: wrap;
 }
 
@@ -78,17 +78,12 @@
 }
 
 .preview-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
+  display: flex;
+  justify-content: center;
   margin-bottom: 30px;
 }
 
 @media (max-width: 768px) {
-  .preview-container {
-    grid-template-columns: 1fr;
-  }
-  
   .processing-section {
     flex-direction: column;
     align-items: center;
@@ -178,6 +173,7 @@
   padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
   transition: transform 0.2s ease;
+  max-width: 500px;
 }
 
 .image-preview:hover {
@@ -206,180 +202,6 @@
   display: block;
   width: 100%;
   height: auto;
-  max-height: 300px;
+  max-height: 400px;
   object-fit: contain;
 }
-
-/* MaskingControls.css */
-.masking-controls {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
-  margin-top: 2rem;
-  border-left: 4px solid #27ae60;
-}
-
-.masking-controls h3 {
-  margin-top: 0;
-  color: #27ae60;
-  font-weight: 600;
-  font-size: 1.25rem;
-}
-
-.masking-controls > p {
-  color: #7f8c8d;
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
-  font-size: 0.95rem;
-}
-
-.control-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.download-button,
-.reset-button {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 6px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-}
-
-.download-button {
-  background-color: #27ae60;
-  color: white;
-}
-
-.download-button:hover {
-  background-color: #219653;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3);
-}
-
-.reset-button {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.reset-button:hover {
-  background-color: #c0392b;
-  transform: translateY(-2px);
-}
-
-/* LoadingSpinner.css */
-.loading-spinner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  gap: 1rem;
-}
-
-.spinner-icon {
-  color: #3498db;
-  animation: spin 1.5s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.loading-spinner p {
-  margin: 0;
-  color: #7f8c8d;
-  font-weight: 500;
-}
-
-
-.ocr-progress {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.5rem;
-  background: white;
-  border-radius: 12px;
-  margin: 1rem 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
-}
-
-.progress-content {
-  flex: 1;
-}
-
-.status-text {
-  margin: 0 0 0.5rem 0;
-  color: #2c3e50;
-  font-weight: 500;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 8px;
-  background-color: #ecf0f1;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 0.5rem;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #3498db, #2980b9);
-  border-radius: 4px;
-  transition: width 0.3s ease;
-}
-
-.progress-text {
-  margin: 0;
-  color: #7f8c8d;
-  font-size: 0.9rem;
-}
-
-
-/* PII Results */
-.pii-results {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin: 1rem 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
-}
-
-.pii-results h3 {
-  margin-top: 0;
-  color: #2c3e50;
-  font-size: 1.1rem;
-}
-
-.pii-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-.pii-tag {
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.pii-name { background-color: #ffeaa7; color: #2d3436; }
-.pii-id_number { background-color: #fab1a0; color: #2d3436; }
-.pii-dob { background-color: #74b9ff; color: white; }
-.pii-phone { background-color: #a29bfe; color: white; }
-.pii-email { background-color: #fd79a8; color: white; }
-.pii-address { background-color: #00cec9; color: white; }

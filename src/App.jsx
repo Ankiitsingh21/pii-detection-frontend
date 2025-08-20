@@ -3,7 +3,7 @@ import FileUpload from './components/FileUpload';
 import ImagePreview from './components/ImagePreview';
 import MaskingControls from './components/MaskingControls';
 import OCRProgress from './components/OCRProgress';
-import { detectAndMaskPII } from './utils/ocrMaskingService';
+import { detectAndMaskPII } from './utils/backendMaskingService';
 import './App.css';
 
 function App() {
@@ -17,6 +17,20 @@ function App() {
 
   const handleImageUpload = (file) => {
     setError(null);
+    
+    // Validate file size (max 10MB)
+    const maxSize = 10 * 1024 * 1024; // 10MB
+    if (file.size > maxSize) {
+      setError('File size is too large. Please select an image under 10MB.');
+      return;
+    }
+    
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      setError('Please select a valid image file.');
+      return;
+    }
+    
     setOriginalImage(file);
     setMaskedImage(null);
     setDetectedPII([]);
@@ -33,16 +47,16 @@ function App() {
     setDetectedPII([]);
     
     try {
-      const result = await detectAndMaskPII(originalImage, (progress) => {
+      const result = await detectAndMaskPII(originalImage, (progress, status) => {
         setOcrProgress(progress);
-        setOcrProgress(`Processing: ${Math.round(progress)}%`);
+        setOcrStatus(status || `Processing: ${Math.round(progress)}%`);
       });
       
       setMaskedImage(result.maskedImageUrl);
       setDetectedPII(result.detectedPII);
     } catch (err) {
-      setError(err.message || 'Failed to process image. Please try again with a clearer image.');
-      console.error('OCR Processing error:', err);
+      setError(err.message || 'Failed to process image. Please try again.');
+      console.error('Backend Processing error:', err);
     } finally {
       setIsProcessing(false);
       setOcrProgress(0);
