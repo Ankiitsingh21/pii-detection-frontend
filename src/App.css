@@ -21,7 +21,7 @@
 }
 
 .app-main {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -78,12 +78,17 @@
 }
 
 .preview-container {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
   margin-bottom: 30px;
 }
 
 @media (max-width: 768px) {
+  .preview-container {
+    grid-template-columns: 1fr;
+  }
+  
   .processing-section {
     flex-direction: column;
     align-items: center;
@@ -173,7 +178,6 @@
   padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
   transition: transform 0.2s ease;
-  max-width: 500px;
 }
 
 .image-preview:hover {
@@ -205,3 +209,45 @@
   max-height: 400px;
   object-fit: contain;
 }
+
+/* Loading Spinner Animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* PII Results */
+.pii-results {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+}
+
+.pii-results h3 {
+  margin-top: 0;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.pii-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.pii-tag {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.pii-name { background-color: #ffeaa7; color: #2d3436; }
+.pii-id_number { background-color: #fab1a0; color: #2d3436; }
+.pii-dob { background-color: #74b9ff; color: white; }
+.pii-phone { background-color: #a29bfe; color: white; }
+.pii-email { background-color: #fd79a8; color: white; }
+.pii-address { background-color: #00cec9; color: white; }
